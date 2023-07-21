@@ -7,7 +7,6 @@ void swap_nodes(listint_t **list, listint_t *node1,
  * @node1: first node
  * @node2: Second node
  * @list: list
- * @pos: pos
  * Return: Current swapped node
  */
 void swap_nodes(listint_t **list, listint_t *node1,
@@ -42,14 +41,14 @@ void cocktail_sort_list(listint_t **list)
 	int swapped = 1;
 	listint_t *start = *list;
 
-	if (!list || !(*list) || (*list)->next == NULL)
+	if (list == NULL || *list == NULL)
 		return;
 	while (swapped)
 	{
 		swapped = 0;
 		while (start->next != NULL)/* Forward pass (bubble sort)*/
 		{
-			if (start->n > start->next->n)
+			if (start->next->n < start->n)
 			{
 				swap_nodes(list, start, start->next);
 				swapped = 1;
@@ -67,7 +66,7 @@ void cocktail_sort_list(listint_t **list)
 		/* Backward pass (bubble sort)*/
 		while (start->prev != NULL)/* Backward pass (bubble sort)*/
 		{
-			if ((start->n < start->prev->n))
+			if (start->prev->n > start->n)
 			{
 				swap_nodes(list, start->prev, start);
 				swapped = 1;
