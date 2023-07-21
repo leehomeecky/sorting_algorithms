@@ -1,8 +1,26 @@
 #include "sort.h"
-
+#include <stdbool.h>
 int getMax(int a[], int n);
 void countingSort(int a[], int n, int place);
 void radix_sort(int *array, size_t size);
+/**
+ * is_sorted - check if array is sorted
+ * @array: array
+ * @size: array size
+ * Return: bool
+ */
+bool is_sorted(int *array, size_t size)
+{
+        size_t i;
+
+        for (i = 1; i < size; i++)
+        {
+                if (array[i] < array[i - 1])
+                        return false;
+        }
+
+        return true;
+}
 /**
  * getMax - max number
  * @a: array
@@ -74,6 +92,8 @@ void radix_sort(int *array, size_t size)
 
 	if (array == NULL || size < 2)
 		return;
+	if (is_sorted(array, size))
+                        return;
 	/* Apply counting sort to sort elements based on place value*/
 	for (place = 1; max / place > 0; place *= 10)
 		countingSort(array, size, place);
