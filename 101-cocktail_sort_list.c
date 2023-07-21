@@ -28,7 +28,13 @@ void swap_nodes(listint_t **list, listint_t *node1,
 	first->next = second->next;
 
 	if (second->next != NULL)
+	{
 		second->next->prev = first;
+	}
+		else
+	{
+		first->next = NULL;
+	}
 
 	second->next = first;
 		return;
@@ -39,8 +45,13 @@ void swap_nodes(listint_t **list, listint_t *node1,
 	first->next = second->next;
 
 	if (second->next != NULL)
+	{
 		second->next->prev = first;
-
+	}
+	else
+	{
+		first->next = NULL;
+	}
 	second->next = first;
 	/*innernode = second;*/
 }
