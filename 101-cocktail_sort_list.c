@@ -40,50 +40,42 @@ void cocktail_sort_list(listint_t **list)
 {
 	int swapped = 1;
 	listint_t *start = *list;
-	listint_t *current;
 
 	if (list == NULL || *list == NULL)
 		return;
-
 	while (swapped)
 	{
 		swapped = 0;
-
-		/* Forward pass (bubble sort) */
-		current = start;
-		while (current->next != NULL)
+		while (start->next != NULL)/* Forward pass (bubble sort)*/
 		{
-			if (current->next->n < current->n)
+			if (start->next->n < start->n)
 			{
-				swap_nodes(list, current, current->next);
+				swap_nodes(list, start, start->next);
 				swapped = 1;
 				print_list(*list);
 			}
 			else
 			{
-				current = current->next;
+			start = start->next;
 			}
 		}
-
-		if (!swapped)
+		if (!swapped)/* If no swaps occurred, the list is sorted*/
 			break;
-
 		swapped = 0;
-		/* Backward pass (bubble sort) */
-		current = current->prev; /* Move to the last node in the list */
-		while (current->prev != NULL)
+		/* Mark the end of the sorted portion*/
+		/* Backward pass (bubble sort)*/
+		while (start->prev != NULL)/* Backward pass (bubble sort)*/
 		{
-			if (current->prev->n > current->n)
+			if (start->prev->n > start->n)
 			{
-				swap_nodes(list, current->prev, current);
+				swap_nodes(list, start->prev, start);
 				swapped = 1;
 				print_list(*list);
 			}
 			else
 			{
-				current = current->prev;
+			start = start->prev;
 			}
 		}
 	}
 }
-
