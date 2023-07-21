@@ -17,9 +17,22 @@ void swap_nodes(listint_t **list, listint_t *node1,
 
 	/*Update next and prev pointers of adjacent nodes */
 	if (first->prev != NULL)
+	{
 		first->prev->next = second;
+	}
 	else
+	{
 		*list = second;
+		second->prev = NULL;
+		first->prev = second;
+	first->next = second->next;
+
+	if (second->next != NULL)
+		second->next->prev = first;
+
+	second->next = first;
+		return;
+	}
 
 	second->prev = first->prev;
 	first->prev = second;
