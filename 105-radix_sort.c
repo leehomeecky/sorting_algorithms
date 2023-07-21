@@ -57,7 +57,7 @@ void countingSort(int a[], int n, int place)
 	for (i = 0; i < n; i++)
 		a[i] = output[i];
 
-	print_array(a, n);
+	/*print_array(a, n);*/
 
 	free(output);
 }
@@ -76,6 +76,9 @@ void radix_sort(int *array, size_t size)
 		return;
 	/* Apply counting sort to sort elements based on place value*/
 	for (place = 1; max / place > 0; place *= 10)
+		{
+			print_array(array, size);
 		countingSort(array, size, place);
+		}
 }
 
