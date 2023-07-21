@@ -34,7 +34,7 @@ void countingSort(int a[], int n, int place)
 	int i;
 	/*int placeincrement = 0;*/
 
-	output = malloc((n) * sizeof(int));
+	output = malloc((n + 3) * sizeof(int));
 	if (output == NULL)
 		return;
 
