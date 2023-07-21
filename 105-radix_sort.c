@@ -11,15 +11,15 @@ void radix_sort(int *array, size_t size);
  */
 bool is_sorted(int *array, size_t size)
 {
-        size_t i;
+	size_t i;
 
-        for (i = 1; i < size; i++)
-        {
-                if (array[i] < array[i - 1])
-                        return false;
-        }
+	for (i = 1; i < size; i++)
+	{
+		if (array[i] < array[i - 1])
+			return (false);
+	}
 
-        return true;
+	return (true);
 }
 /**
  * getMax - max number
@@ -92,8 +92,6 @@ void radix_sort(int *array, size_t size)
 
 	if (array == NULL || size < 2)
 		return;
-	if (is_sorted(array, size))
-                        return;
 	/* Apply counting sort to sort elements based on place value*/
 	for (place = 1; max / place > 0; place *= 10)
 		countingSort(array, size, place);
