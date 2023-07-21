@@ -32,7 +32,7 @@ void countingSort(int a[], int n, int place)
 	int *output;
 	int count[20] = {0};
 	int i;
-	int placeincrement = 0;
+	/*int placeincrement = 0;*/
 
 	output = malloc((n) * sizeof(int));
 	if (output == NULL)
@@ -51,7 +51,7 @@ void countingSort(int a[], int n, int place)
 	{
 		output[count[(a[i] / place) % 10] - 1] = a[i];
 		count[(a[i] / place) % 10]--;
-		placeincrement = 1;
+		/*placeincrement = 1;*/
 	}
 
 	for (i = 0; i < n; i++)
