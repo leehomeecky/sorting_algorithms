@@ -14,21 +14,24 @@ void swap_nodes(listint_t **list, listint_t *node1,
 {
 	listint_t *first = node1;
 	listint_t *second = node2;
+	 listint_t *temp;
 
-	/*Update next and prev pointers of adjacent nodes */
-	if (first->prev != NULL)
-		first->prev->next = second;
-	else
-		*list = second;
+    /* Update next and prev pointers of adjacent nodes */
+    if (first->prev != NULL)
+        first->prev->next = second;
+    else
+        *list = second;
 
-	second->prev = first->prev;
-	first->prev = second;
-	first->next = second->next;
+    if (second->next != NULL)
+        second->next->prev = first;
 
-	if (second->next != NULL)
-		second->next->prev = first;
+    first->prev = second->prev;
+    second->prev = first;
 
-	second->next = first;
+    /* Swap the next pointers */
+    temp = first->next;
+    first->next = second->next;
+    second->next = temp;
 	/*innernode = second;*/
 }
 /**
