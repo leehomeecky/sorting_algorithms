@@ -47,14 +47,14 @@ int getMax(int a[], int n)
  */
 void countingSort(int a[], int n, int place)
 {
-	int *output;
+	int output[1024];
 	int count[1024] = {0};
 	int i;
 	/*int placeincrement = 0;*/
 
-	output = malloc((n + 3) * sizeof(int));
-	if (output == NULL)
-		return;
+	/*output = malloc((n + 3) * sizeof(int));*/
+	/*if (output == NULL)*/
+		/*return;*/
 
 	/* Calculate count of elements*/
 	for (i = 0; i < n; i++)
@@ -77,7 +77,7 @@ void countingSort(int a[], int n, int place)
 
 	print_array(a, n);
 
-	free(output);
+	/*free(output);*/
 }
 /**
  * radix_sort - radix sort
