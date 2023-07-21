@@ -56,8 +56,8 @@ void countingSort(int a[], int n, int place)
 
 	for (i = 0; i < n; i++)
 		a[i] = output[i];
-	if (placeincrement > 0)
-		print_array(a, n);
+
+	print_array(a, n);
 
 	free(output);
 }
