@@ -31,9 +31,9 @@ node->next->prev = node;
  */
 void cocktail_sort_list(listint_t **list)
 {
-    char swapped = 1;
     /*listint_t *start = *list*/;
     listint_t *end;
+    char swapped = 1;
 
     if (list == NULL || *list == NULL)
         return;
