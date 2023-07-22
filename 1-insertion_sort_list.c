@@ -12,16 +12,18 @@ void swap_list(listint_t **list, listint_t **pos, listint_t *val);
 
 void swap_list (listint_t **list, listint_t **pos, listint_t *val)
 {
-	(*pos)->next = val->next;
+	listint_t *temp = *pos;
+
+	temp->next = val->next;
 	if (val->next != NULL)
-		val->next->prev = *pos;
-	val->prev = (*pos)->prev;
-	val->next = *pos;
-	if ((*pos)->prev != NULL)
-		(*pos)->prev->next = val;
+		val->next->prev = temp;
+	val->prev = temp->prev;
+	val->next = temp;
+	if (temp->prev != NULL)
+		temp->prev->next = val;
 	else
 		*list = val;
-	(*pos)->prev = val;
+	temp->prev = val;
 	*pos = val->prev;
 }
 
