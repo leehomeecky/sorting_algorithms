@@ -10,7 +10,7 @@ void swap_list(listint_t **list, listint_t **pos, listint_t *val);
  * @val: value to swap
  */
 
-void swap_list(listint_t **list, listint_t **pos, listint_t *val)
+void swap_list (listint_t **list, listint_t **pos, listint_t *val)
 {
 	listint_t *temp = *pos;
 
