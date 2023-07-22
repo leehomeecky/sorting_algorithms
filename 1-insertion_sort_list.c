@@ -18,7 +18,7 @@ void insert(listint_t **list, listint_t *val)
 		if (temp->n > val->n)
 		{
 			val->prev = temp->prev;
-			val->next = temp; 
+			val->next = temp;
 			if (temp->prev != NULL)
 				temp->prev->next = val;
 			else
