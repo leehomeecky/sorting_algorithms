@@ -4,7 +4,7 @@ void insert(listint_t **list, listint_t *val);
 
 /**
  * insert - a function to insert a value into a lincked list
- * 
+ *
  * @list: pointer to the list to insert into
  * @val: value to insert
  */
@@ -12,13 +12,13 @@ void insert(listint_t **list, listint_t *val);
 void insert(listint_t **list, listint_t *val)
 {
 	listint_t *temp = *list;
-	
+
 	while (temp)
 	{
 		if (temp->n > val->n)
 		{
 			val->prev = temp->prev;
-			val->next = temp; 
+			val->next = temp;
 			if (temp->prev != NULL)
 				temp->prev->next = val;
 			else
