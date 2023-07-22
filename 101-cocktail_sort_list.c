@@ -33,8 +33,8 @@ void cocktail_sort_list(listint_t **list)
 {
     /*listint_t *start = *list*/;
     listint_t *end;
-    char swapped = 1;
 
+    char swapped = 1;
     if (list == NULL || *list == NULL)
         return;
     end = *list;
