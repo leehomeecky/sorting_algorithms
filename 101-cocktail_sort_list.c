@@ -8,7 +8,7 @@
  *
  * Return: void
  */
-void swap_with_next(listint_t **list, listint_t *node)
+void swap(listint_t **list, listint_t *node)
 {
     listint_t *next_node;
 
