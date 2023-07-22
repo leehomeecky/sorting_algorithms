@@ -38,44 +38,51 @@ void swap_nodes(listint_t **list, listint_t *node1,
  */
 void cocktail_sort_list(listint_t **list)
 {
-	int swapped = 1;
-	listint_t *start = *list;
+    int swapped = 1;
+    listint_t *start = *list;
+    listint_t *current;
 
-	if (list == NULL || *list == NULL)
-		return;
-	while (swapped)
-	{
-		swapped = 0;
-		while (start->next != NULL)/* Forward pass (bubble sort)*/
-		{
-			if (start->next->n < start->n)
-			{
-				swap_nodes(list, start, start->next);
-				swapped = 1;
-				print_list(*list);
-			}
-			else
-			{
-			start = start->next;
-			}
-		}
-		if (!swapped)/* If no swaps occurred, the list is sorted*/
-			break;
-		swapped = 0;
-		/* Mark the end of the sorted portion*/
-		/* Backward pass (bubble sort)*/
-		while (start->prev != NULL)/* Backward pass (bubble sort)*/
-		{
-			if (start->prev->n > start->n)
-			{
-				swap_nodes(list, start->prev, start);
-				swapped = 1;
-				print_list(*list);
-			}
-			else
-			{
-			start = start->prev;
-			}
-		}
-	}
+    if (list == NULL || *list == NULL)
+        return;
+    
+    while (swapped)
+    {
+        swapped = 0;
+
+        /* Forward pass (bubble sort) */
+        current = start;
+        while (current->next != NULL)
+        {
+            if (current->next->n < current->n)
+            {
+                swap_nodes(list, current, current->next);
+                swapped = 1;
+                print_list(*list);
+            }
+            else
+            {
+                current = current->next;
+            }
+        }
+
+        if (!swapped)
+            break;
+
+        swapped = 0;
+        /* Backward pass (bubble sort) */
+        current = current->prev; /* Move to the last node in the list */
+        while (current->prev != NULL)
+        {
+            if (current->prev->n > current->n)
+            {
+                swap_nodes(list, current->prev, current);
+                swapped = 1;
+                print_list(*list);
+            }
+            else
+            {
+                current = current->prev;
+            }
+        }
+    }
 }
