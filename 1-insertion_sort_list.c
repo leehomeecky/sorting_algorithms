@@ -1,24 +1,28 @@
 #include "sort.h"
 
-void swap_list(listint_t **list, listint_t *val);
+void swap_list(listint_t **list, listint_t **pos, listint_t *val);
 
 /**
- * swap_list - a function to swap a value into a lincked list
+ * swap_list - a function to swap a value in a lincked list
  * 
  * @list: pointer to the list to swap into
+ * @pos: position to swap
  * @val: value to swap
  */
 
-void swap_list(listint_t **list, listint_t *val)
-{	
-			if (val->next)
-			val->next->prev = val->prev;
-			val->prev->next = val->next;
-			val->next = val->prev;
-			val->prev = val->prev->prev;
-			val->next->prev = val;
-		if (val->prev == NULL)
-				*list = val;
+void swap_list (listint_t **list, listint_t **pos, listint_t *val)
+{
+	(*pos)->next = val->next;
+	if (val->next != NULL)
+		val->next->prev = *pos;
+	val->prev = (*pos)->prev;
+	val->next = *pos;
+	if ((*pos)->prev != NULL)
+		(*pos)->prev->next = val;
+	else
+		*list = val;
+	(*pos)->prev = val;
+	*pos = val->prev;
 }
 
 /**
@@ -29,23 +33,19 @@ void swap_list(listint_t **list, listint_t *val)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *val, *temp;
+	listint_t *next_val, *tep2, *temp1;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	temp = (*list)->next;
-	while (temp)
+
+	for (next_val = (*list)->next; next_val != NULL; next_val = temp1)
 	{
-		if (temp->prev->n < temp->n)
+		temp1 = next_val->next;
+		tep2 = next_val->prev;
+		while (tep2 != NULL && next_val->n < tep2->n)
 		{
-			val = temp->next;
-			if (val->next)
-			val->next->prev = val->prev;
-			val->prev->next = val->next;
-			swap_list(list, val);
-			print_list((const listint_t *)*list);
+			swap_list(list, &tep2, next_val);
+			print_list(*list);
 		}
-		else
-		temp = temp->next;
 	}
 }
