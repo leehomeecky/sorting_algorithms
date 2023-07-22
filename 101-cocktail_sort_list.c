@@ -1,6 +1,7 @@
 #include "sort.h"
 #include <stdio.h>
-
+void swap(listint_t **list, listint_t *node);
+void cocktail_sort_list(listint_t **list);
 /**
  * swap - swaps a node with the next node in the list
  * @list: double pointer to the beginning of the list
@@ -10,25 +11,25 @@
  */
 void swap(listint_t **list, listint_t *node)
 {
-    listint_t *next_node;
+	listint_t *next_node;
 
-    if (node == NULL || node->next == NULL)
-        return;
+	if (node == NULL || node->next == NULL)
+		return;
 
-    next_node = node->next;
-    node->next = next_node->next;
+	next_node = node->next;
+	node->next = next_node->next;
 
-    if (next_node->next != NULL)
-        next_node->next->prev = node;
+	if (next_node->next != NULL)
+		next_node->next->prev = node;
 
-    next_node->next = node;
-    next_node->prev = node->prev;
-    node->prev = next_node;
+	next_node->next = node;
+	next_node->prev = node->prev;
+	node->prev = next_node;
 
-    if (next_node->prev != NULL)
-        next_node->prev->next = next_node;
-    else
-        *list = next_node;
+	if (next_node->prev != NULL)
+		next_node->prev->next = next_node;
+	else
+		*list = next_node;
 }
 
 /**
@@ -40,49 +41,51 @@ void swap(listint_t **list, listint_t *node)
  */
 void cocktail_sort_list(listint_t **list)
 {
-    /*listint_t *start = *list*/
-    listint_t *end;
+	/*listint_t *start = *list*/
+	listint_t *start, *end;
+	bool swapped = true;
 
-    char swapped = 1;
-    if (list == NULL || *list == NULL)
-        return;
-    end = *list;
-    while (swapped)
-    {
-        swapped = 0;
+	if (list == NULL || *list == NULL)
+		return;
+	start = *list;
+	while (swapped)
+	{
+		swapped = false;
 
-        /* Forward pass (bubble sort) */
-        while (end->next != NULL)
-        {
-            if (end->next->n < end->n)
-            {
-                swap(list, end);
-                swapped = 1;
-                print_list(*list);
-            }
-            else
-            {
-                end = end->next;
-            }
-        }
+		/* Forward pass (bubble sort) */
+		while (start->next != NULL)
+		{
+			if (start->next->n < start->n)
+			{
+				swap(list, start);
+				swapped = true;
+				print_list(*list);
+			}
+			else
+			{
+				start = start->next;
+			}
+		}
 
-        if (!swapped)
-            break;
+		if (!swapped)
+			break;
 
-        swapped = 0;
-        /* Backward pass (bubble sort) */
-        while (end->prev != NULL)
-        {
-            if (end->prev->n > end->n)
-            {
-                swap(list, end->prev);
-                swapped = 1;
-                print_list(*list);
-            }
-            else
-            {
-                end = end->prev;
-            }
-        }
-    }
+		swapped = false;
+		/* Backward pass (bubble sort) */
+		end = start;
+		while (end->prev != NULL)
+		{
+			if (end->prev->n > end->n)
+			{
+				swap(list, end->prev);
+				swapped = true;
+				print_list(*list);
+			}
+			else
+			{
+				end = end->prev;
+			}
+		}
+		start = end;
+	}
 }
