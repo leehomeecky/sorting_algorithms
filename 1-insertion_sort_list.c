@@ -4,7 +4,7 @@ void swap_list(listint_t **list, listint_t **pos, listint_t *val);
 
 /**
  * swap_list - a function to swap a value in a lincked list
- * 
+ *
  * @list: pointer to the list to swap into
  * @pos: position to swap
  * @val: value to swap
