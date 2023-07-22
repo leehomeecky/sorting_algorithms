@@ -53,6 +53,7 @@ void insertion_sort_list(listint_t **list)
 		if (temp->next->n < temp->n)
 		{
 			val = temp->next;
+			if (val->next)
 			val->next->prev = val->prev;
 			val->prev->next = val->next;
 			insert(list, val);
