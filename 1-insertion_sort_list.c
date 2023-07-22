@@ -48,6 +48,8 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *val, *temp = *list;
 
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
 	while (temp->next)
 	{
 		if (temp->next->n < temp->n)
@@ -57,7 +59,7 @@ void insertion_sort_list(listint_t **list)
 			val->next->prev = val->prev;
 			val->prev->next = val->next;
 			insert(list, val);
-			print_list(*list);
+			print_list((const listint_t *)*list);
 		}
 		else
 		temp = temp->next;
