@@ -31,39 +31,49 @@ node->next->prev = node;
  */
 void cocktail_sort_list(listint_t **list)
 {
-char swapped = 1;
-listint_t *temp;
+    char swapped = 1;
+    /*listint_t *start = *list*/;
+    listint_t *end = *list;
 
-if (list == NULL || *list == NULL)
-return;
-temp = *list;
-while (swapped != 0)
-{
-swapped = 0;
-while (temp->next != NULL)
-{
-if (temp->next->n < temp->n)
-{
-swap(list, temp);
-swapped = 1;
-print_list(*list);
-}
-else
-temp = temp->next;
-}
-if (swapped == 0)
-break;
-swapped = 0;
-while (temp->prev != NULL)
-{
-if (temp->prev->n > temp->n)
-{
-swap(list, temp->prev);
-swapped = 1;
-print_list(*list);
-}
-else
-temp = temp->prev;
-}
-}
+    if (list == NULL || *list == NULL)
+        return;
+
+    while (swapped)
+    {
+        swapped = 0;
+
+        /* Forward pass (bubble sort) */
+        while (end->next != NULL)
+        {
+            if (end->next->n < end->n)
+            {
+                swap(list, end);
+                swapped = 1;
+                print_list(*list);
+            }
+            else
+            {
+                end = end->next;
+            }
+        }
+
+        if (!swapped)
+            break;
+
+        swapped = 0;
+        /* Backward pass (bubble sort) */
+        while (end->prev != NULL)
+        {
+            if (end->prev->n > end->n)
+            {
+                swap(list, end->prev);
+                swapped = 1;
+                print_list(*list);
+            }
+            else
+            {
+                end = end->prev;
+            }
+        }
+    }
 }
