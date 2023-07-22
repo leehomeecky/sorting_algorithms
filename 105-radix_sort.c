@@ -87,11 +87,12 @@ void countingSort(int a[], int n, int place)
 void radix_sort(int *array, size_t size)
 {
 	/* get maximum element from array */
-	int max = getMax(array, size);
+	int max;
 	int place;
 
 	if (array == NULL || size < 2)
 		return;
+	 max = getMax(array, size);
 	/* Apply counting sort to sort elements based on place value*/
 	for (place = 1; max / place > 0; place *= 10)
 		countingSort(array, size, place);
