@@ -8,18 +8,27 @@
  *
  * Return: void
  */
-void swap(listint_t **list, listint_t *node)
+void swap_with_next(listint_t **list, listint_t *node)
 {
-node->next->prev = node->prev;
-if (node->prev)
-node->prev->next = node->next;
-else
-*list = node->next;
-node->prev = node->next;
-node->next = node->next->next;
-node->prev->next = node;
-if (node->next)
-node->next->prev = node;
+    listint_t *next_node;
+
+    if (node == NULL || node->next == NULL)
+        return;
+
+    next_node = node->next;
+    node->next = next_node->next;
+
+    if (next_node->next != NULL)
+        next_node->next->prev = node;
+
+    next_node->next = node;
+    next_node->prev = node->prev;
+    node->prev = next_node;
+
+    if (next_node->prev != NULL)
+        next_node->prev->next = next_node;
+    else
+        *list = next_node;
 }
 
 /**
