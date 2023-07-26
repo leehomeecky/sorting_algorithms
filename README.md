@@ -10,3 +10,4 @@
 ## 104-heap_sort.c, 104-O
 ## 105-radix_sort.c
 ## 106-bitonic_sort.c, 106-O
+## 107-quick_sort_hoare.c, 107-O
