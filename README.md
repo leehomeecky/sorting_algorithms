@@ -6,3 +6,4 @@
 ## 100-shell_sort.c
 ## 101-cocktail_sort_list.c, 101-O
 ## 102-counting_sort.c, 102-O
+## 103-merge_sort.c, 103-O
