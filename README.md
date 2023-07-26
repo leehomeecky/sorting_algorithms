@@ -11,3 +11,4 @@
 ## 105-radix_sort.c
 ## 106-bitonic_sort.c, 106-O
 ## 107-quick_sort_hoare.c, 107-O
+## 1000-sort_deck.c, deck.h
