@@ -5,3 +5,4 @@
 ## 3-quick_sort.c, 3-O
 ## 100-shell_sort.c
 ## 101-cocktail_sort_list.c, 101-O
+## 102-counting_sort.c, 102-O
