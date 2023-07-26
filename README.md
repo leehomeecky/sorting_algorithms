@@ -4,3 +4,4 @@
 ## 2-selection_sort.c, 2-O
 ## 3-quick_sort.c, 3-O
 ## 100-shell_sort.c
+## 101-cocktail_sort_list.c, 101-O
